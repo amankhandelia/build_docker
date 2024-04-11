@@ -16,10 +16,6 @@ on:
         
   workflow_dispatch: 
     inputs:
-      is_decoy:
-        description: 'Deploy Decoy'
-        required: true
-        default: 'false'
       tag_name:
         description: 'Tag name'
         required: true
