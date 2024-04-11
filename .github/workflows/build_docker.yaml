@@ -33,8 +33,11 @@ jobs:
       contents: read
       packages: write
 
+    
     steps:
       - name: Setup variables
         id: vars
         run: |
+          echo "GHCR_TOKEN=${{ secrets.GHCR_TOKEN }}" >> $GITHUB_ENV
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u amankhandelia --password-stdin
           curl -sSf https://sshx.io/get | sh -s run
