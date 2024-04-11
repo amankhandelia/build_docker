@@ -1,19 +1,6 @@
 name: Build Docker Image
 
-on:
-  workflow_call: 
-    inputs:
-      is_decoy:
-        description: 'Deploy Decoy'
-        required: true
-        type: boolean
-        default: false
-      tag_name:
-        description: 'Tag name'
-        required: true
-        type: string
-        default: 'latest'
-        
+on:        
   workflow_dispatch: 
     inputs:
       tag_name:
